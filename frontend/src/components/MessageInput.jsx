@@ -57,10 +57,7 @@ const MessageInput = () => {
   // Close emoji picker when clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        emojiPickerRef.current &&
-        !emojiPickerRef.current.contains(event.target)
-      ) {
+      if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
         setShowEmojiPicker(false);
       }
     };
@@ -97,17 +94,17 @@ const MessageInput = () => {
           <button
             type="button"
             onClick={() => setShowEmojiPicker((prev) => !prev)}
-            className="btn btn-sm btn-circle"
+            className="hidden sm:flex  btn btn-sm btn-circle"
           >
             <Smile size={20} />
           </button>
 
           {showEmojiPicker && (
             <div
-            ref={emojiPickerRef}
-            className="absolute bottom-full left-0 mb-2 z-50 hidden sm:block" // Hidden on mobile, shown on laptop
-            style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
-          >
+              ref={emojiPickerRef} // Reference to the emoji picker
+              className="absolute bottom-full left-0 mb-2 z-50"
+              style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
+            >
               <EmojiPicker
                 onEmojiClick={handleEmojiClick}
                 emojiStyle="native" // Use native emojis for WhatsApp-like appearance
@@ -121,12 +118,11 @@ const MessageInput = () => {
           <div className="flex-1 flex gap-2">
             <input
               type="text"
-              className="w-full input input-bordered rounded-lg input-sm sm:input-md mt-1"
+              className="w-full input input-bordered rounded-lg input-sm sm:input-md"
               placeholder="Type a message..."
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
-
             <input
               type="file"
               accept="image/*"
