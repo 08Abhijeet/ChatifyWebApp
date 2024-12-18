@@ -57,7 +57,10 @@ const MessageInput = () => {
   // Close emoji picker when clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
+      if (
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target)
+      ) {
         setShowEmojiPicker(false);
       }
     };
@@ -101,10 +104,10 @@ const MessageInput = () => {
 
           {showEmojiPicker && (
             <div
-              ref={emojiPickerRef} // Reference to the emoji picker
-              className="absolute bottom-full left-0 mb-2 z-50"
-              style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
-            >
+            ref={emojiPickerRef}
+            className="absolute bottom-full left-0 mb-2 z-50 hidden sm:block" // Hidden on mobile, shown on laptop
+            style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
+          >
               <EmojiPicker
                 onEmojiClick={handleEmojiClick}
                 emojiStyle="native" // Use native emojis for WhatsApp-like appearance
@@ -118,11 +121,12 @@ const MessageInput = () => {
           <div className="flex-1 flex gap-2">
             <input
               type="text"
-              className="w-full input input-bordered rounded-lg input-sm sm:input-md"
+              className="w-full input input-bordered rounded-lg input-sm sm:input-md mt-1"
               placeholder="Type a message..."
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
+
             <input
               type="file"
               accept="image/*"
@@ -138,7 +142,7 @@ const MessageInput = () => {
               }`}
               onClick={() => fileInputRef.current?.click()}
             >
-              <Image size={20} />
+              <Image size={15} />
             </button>
           </div>
           <button
