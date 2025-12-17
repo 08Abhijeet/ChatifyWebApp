@@ -1,8 +1,6 @@
 # ✨ Full Stack Realtime Chat App ✨
-Link to application: chatifywebapp.onrender.com
-![Demo App](/frontend/public/screenshot-for-readme.png)
+Link to the Application:- [chatifywebapp.onrender.com](https://chatifywebapp.onrender.com/)
 
-[Video Tutorial on Youtube](https://youtu.be/ntKkVrQqBYY)
 
 Highlights:
 
